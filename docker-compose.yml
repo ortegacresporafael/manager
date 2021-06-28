@@ -19,9 +19,7 @@ services:
       - /mnt/volumes/gitlab-data:/var/opt/gitlab
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.hostname == manager]
+
 
 
 # Configuración de Jenkins
@@ -37,9 +35,7 @@ services:
       - /usr/bin/docker:/usr/bin/docker
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.hostname == worker1]
+
 
 
 # Configuración de Docker Registry
@@ -56,9 +52,7 @@ services:
       - /mnt/volumes/registry-data:/var/lib/registry
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.hostname == manager]
+
 
 
 # Configuración de Swarmpit
@@ -73,16 +67,10 @@ services:
       - 888:8080
     networks:
       - net
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
     depends_on:
       - db
       - influxdb
-    deploy:
-      placement:
-        constraints: [node.hostname == manager]
+
 
 
 # Configuración de Couchdb
@@ -92,9 +80,7 @@ services:
       - /mnt/volumes/db-data:/opt/couchdb/data
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.hostname == worker2]
+
 
 
 # Configuración de Influx
@@ -104,9 +90,7 @@ services:
       - /mnt/volumes/influx-data:/var/lib/influxdb
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.hostname == worker2]
+
 
 
 # Configuración del Swarmpit agent
