@@ -35,6 +35,9 @@ services:
       - /usr/bin/docker:/usr/bin/docker
     networks:
       - net
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 
 
 
