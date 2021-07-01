@@ -38,7 +38,7 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-        constraints: [node.role == worker]
+    
 
 
 
