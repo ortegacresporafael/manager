@@ -129,10 +129,6 @@ services:
       mode: global
     labels:
         swarmpit.agent: 'true'
-    deploy:
-     placement:
-      constraints:
-       - node.role == worker
 
 
 # Redes
