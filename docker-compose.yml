@@ -19,9 +19,6 @@ services:
       - /mnt/volumes/gitlab-data:/var/opt/gitlab
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.role == worker]
 
 
 # Configuración de Jenkins
@@ -37,9 +34,7 @@ services:
       - /usr/bin/docker:/usr/bin/docker
     networks:
       - net
-    deploy:
-      placement:
-        constraints: [node.role == manager]
+
     
 
 
