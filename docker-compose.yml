@@ -19,7 +19,10 @@ services:
       - /mnt/volumes/gitlab-data:/var/opt/gitlab
     networks:
       - net
-
+    deploy:
+     placement:
+      constraints:
+       - node.role == manager
 
 # Configuración de Jenkins
   jenkins:
@@ -34,6 +37,10 @@ services:
       - /usr/bin/docker:/usr/bin/docker
     networks:
       - net
+    deploy:
+     placement:
+      constraints:
+       - node.role == manager
 
     
 
@@ -53,7 +60,10 @@ services:
       - /mnt/volumes/registry-data:/var/lib/registry
     networks:
       - net
-
+    deploy:
+     placement:
+      constraints:
+       - node.role == worker
 
 
 # Configuración de Swarmpit
@@ -71,6 +81,10 @@ services:
     depends_on:
       - db
       - influxdb
+    deploy:
+     placement:
+      constraints:
+       - node.role == manager
 
 
 
@@ -81,6 +95,10 @@ services:
       - /mnt/volumes/db-data:/opt/couchdb/data
     networks:
       - net
+    deploy:
+     placement:
+      constraints:
+       - node.role == worker
 
 
 
@@ -91,6 +109,10 @@ services:
       - /mnt/volumes/influx-data:/var/lib/influxdb
     networks:
       - net
+    deploy:
+     placement:
+      constraints:
+       - node.role == worker
 
 
 
@@ -107,6 +129,10 @@ services:
       mode: global
     labels:
         swarmpit.agent: 'true'
+    deploy:
+     placement:
+      constraints:
+       - node.role == worker
 
 
 # Redes
