@@ -97,8 +97,7 @@ services:
       - net
     deploy:
      placement:
-      constraints:
-       - node.role == worker
+      constraints: [node.hostname == form-devops2]
 
 
 
@@ -111,8 +110,7 @@ services:
       - net
     deploy:
      placement:
-      constraints:
-       - node.role == worker
+      constraints: [node.hostname == form-devops2]
 
 
 
